@@ -1,0 +1,231 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif; font-size: large;
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+/* Apply Roman Empire color themes */
+#abstract {
+    background-color: #f1e7d2; /* Light beige */
+}
+
+#nature {
+    background-color: #d4e2d4; /* Soft green */
+}
+
+#portrait {
+    background-color: #e5c1a1; /* Warm tan */
+}
+
+
+/* Ensure content is above the overlay */
+.section {
+    position: relative; /* Position to ensure correct stacking */
+    z-index: 2; /* Bring content above the overlay */
+    padding: 50px; /* Add padding as needed */
+}
+
+
+/* Header */
+header {
+    position: fixed; /* Fix the header to the top */
+    top: 0; /* Align it to the top */
+    left: 0; /* Align it to the left */
+    width: 100%; /* Full width */
+    background-color: rgba(75, 44, 94, 0.9); /* Semi-transparent background */
+    padding:3px; /* Padding for aesthetics */
+    z-index: 1000; /* Ensure it sits on top of other elements */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    transition: background-color 0.3s ease, padding 0.3s ease; /* Smooth transitions */
+}
+
+/* Adjust the body margin to accommodate the fixed header */
+body {
+    margin-top: 60px; /* Add margin to avoid content being hidden behind the header */
+}
+
+header .gallery-title {
+    font-family: 'Cinzel', serif;
+    font-size: 2.5em;
+    color: #ffe7c7;
+    transition: transform 0.3s ease; /* Smooth transformation */
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #ffe7c7; /* Default text color */
+    font-size: 1.2em;
+    transition: color 0.3s, transform 0.3s; /* Transition for hover effect */
+}
+
+nav a:hover {
+    color: #d3a659; /* Hover color */
+    transform: scale(1.05); /* Scale up effect on hover */
+}
+
+/* Section Styling */
+.section {
+    min-height: 100vh;
+    padding: 50px 20px;
+    background-size: cover;
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+}
+
+.section h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #ffe7c7;
+    text-shadow: 2px 2px 4px #000;
+}
+
+.gallery {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.gallery img {
+    width: 250px;
+    height: auto;
+    border: 5px solid #d3a659;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    transition: transform 0.5s ease;
+    padding: 8px;
+}
+
+.gallery img:hover {
+    transform: scale(1.05);
+}
+
+
+/* Modal styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    max-width: 80%; /* Limit the width of the image */
+    max-height: 80%; /* Limit the height of the image */
+}
+
+.modal-content:hover {
+    transform: scale(1.1); /* Slight zoom on hover */
+    cursor: zoom-out; /* Change cursor to indicate zoom-out */
+}
+
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    color: white;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#caption {
+    color: white;
+    text-align: center;
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+/* Footer */
+footer {
+    background-color: #333; /* Dark background for footer */
+    color: #fff; /* White text for visibility */
+    padding: 10px 0; /* Padding for spacing */
+    text-align: center; /* Centered text */
+    position: fixed; /* Fixed at the bottom */
+    left: 0;
+    bottom: 0;
+    width: 100%; /* Full width */
+    z-index: 10;
+}
+
+/* Change header background on scroll */
+header.scrolled {
+    background-color: rgba(75, 44, 94, 1); /* Fully opaque on scroll */
+    padding: 5px 20px; /* Reduced padding on scroll */
+}
+
+/* Media Queries for Responsive Design */
+
+/* For devices smaller than 768px (tablets and mobiles) */
+@media (max-width: 768px) {
+    body {
+        margin-top: 60px; /* Keep margin for fixed header */
+    }
+
+    header .gallery-title {
+        font-size: 2em; /* Smaller title font */
+    }
+
+    nav a {
+        font-size: 1em; /* Smaller nav font */
+    }
+
+    .section {
+        padding: 30px 10px; /* Reduce padding */
+    }
+
+    .section h2 {
+        font-size: 1.5em; /* Smaller section heading */
+    }
+
+    .gallery img {
+        width: 90%; /* Full width on mobile */
+        max-width: 250px; /* Limit max width */
+        margin-bottom: 10px; /* Space between images */
+    }
+
+    nav ul {
+        flex-direction: column; /* Stack navigation items */
+        gap: 10px; /* Space between items */
+    }
+}
+
+/* For larger screens */
+@media (min-width: 769px) {
+    .gallery {
+        flex-wrap: wrap; /* Keep images in rows */
+    }
+
+    .gallery img {
+        width: 30%; /* Adjust to three images per row */
+        max-width: 250px; /* Maintain max width */
+    }
+}
