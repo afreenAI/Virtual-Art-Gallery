@@ -1,0 +1,508 @@
+/* Basic Reset */
+#landing {
+    padding-top: 80px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: large;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    color: #333;
+    overflow-x: hidden;
+}
+
+/* Gallery Sections with Immersive Backgrounds */
+#abstract {
+    background: linear-gradient(135deg, #2c1810 0%, #4a2c1a 50%, #2c1810 100%),
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="abstract-pattern" width="50" height="50" patternUnits="userSpaceOnUse"><rect width="50" height="50" fill="none"/><path d="M0 25 L25 0 L50 25 L25 50 Z" fill="rgba(255,255,255,0.05)"/><circle cx="25" cy="25" r="10" fill="rgba(255,255,255,0.03)"/></pattern></defs><rect width="100" height="100" fill="url(%23abstract-pattern)"/></svg>');
+    background-size: cover, 100px 100px;
+    background-attachment: fixed;
+    position: relative;
+}
+
+#abstract::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(ellipse at center, rgba(255,255,255,0.1) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+#nature {
+    background: linear-gradient(135deg, #0f2a1d 0%, #1a4d2e 50%, #0f2a1d 100%),
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="nature-pattern" width="60" height="60" patternUnits="userSpaceOnUse"><circle cx="30" cy="30" r="2" fill="rgba(255,255,255,0.1)"/><path d="M10 50 Q30 30 50 50 Q70 70 90 50" stroke="rgba(255,255,255,0.05)" stroke-width="1" fill="none"/></pattern></defs><rect width="100" height="100" fill="url(%23nature-pattern)"/></svg>');
+    background-size: cover, 120px 120px;
+    background-attachment: fixed;
+    position: relative;
+}
+
+#nature::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(ellipse at center, rgba(255,255,255,0.08) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+#portrait {
+    background: linear-gradient(135deg, #2a1a0f 0%, #4d2a1a 50%, #2a1a0f 100%),
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="portrait-pattern" width="80" height="80" patternUnits="userSpaceOnUse"><ellipse cx="40" cy="40" rx="15" ry="20" fill="rgba(255,255,255,0.06)"/><path d="M20 60 Q40 50 60 60" stroke="rgba(255,255,255,0.04)" stroke-width="2" fill="none"/></pattern></defs><rect width="100" height="100" fill="url(%23portrait-pattern)"/></svg>');
+    background-size: cover, 160px 160px;
+    background-attachment: fixed;
+    position: relative;
+}
+
+#portrait::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(ellipse at center, rgba(255,255,255,0.09) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+
+/* Ensure content is above the overlay */
+.section {
+    position: relative; /* Position to ensure correct stacking */
+    z-index: 2; /* Bring content above the overlay */
+    padding: 50px; /* Add padding as needed */
+}
+
+
+/* Header */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 40px;
+    z-index: 1000;
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    /* NEW */
+    background: transparent !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+}
+
+
+/* Adjust the body margin to accommodate the fixed header */
+body {
+    margin-top: 0; /* Add margin to avoid content being hidden behind the header */
+}
+
+header .gallery-title {
+    font-family: 'Parisienne', cursive;
+    font-size: 2.5em;
+    color: #ffddb0;
+    letter-spacing: 2px;
+    font-weight: 400;
+    text-shadow: 
+        0 0 8px rgba(255, 223, 150, 0.8),
+        0 0 15px rgba(255, 199, 95, 0.6),
+        0 0 25px rgba(255, 170, 50, 0.4);
+    transition: all 0.3s ease;
+}
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #ffe7c7;
+    font-size: 1.0em;                      /* Larger because calligraphy is thin */
+    font-family:Georgia, 'Times New Roman', Times, serif;   /* Calligraphy font */
+    letter-spacing: 1px;
+    transition: color 0.3s, transform 0.3s;
+}
+nav a:hover {
+    color: #ffd9a3;                         /* Softer gold hover */
+    transform: scale(1.15);                 /* Beautiful zoom */
+    text-shadow: 0 0 8px rgba(255,218,170,0.8);
+}
+
+/* Landing Section */
+.landing-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-background {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.6)),
+                url('images/hero-gallery.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 0 20px;
+    animation: fadeInUp 1.5s ease-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50px;
+    padding: 8px 16px;
+    margin-bottom: 32px;
+    font-size: 0.9em;
+    color: white;
+    font-weight: 500;
+}
+
+.palette-icon {
+    width: 16px;
+    height: 16px;
+    color: #d4af37;
+}
+
+.hero-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(3rem, 8vw, 5rem);
+    font-weight: 700;
+    margin-bottom: 24px;
+    color: white;
+    line-height: 1.1;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.gallery-text-gradient {
+    background: linear-gradient(135deg, #d4af37, #b8860b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero-description {
+    font-family: 'Roboto', sans-serif;
+    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+    color: #f0f0f0;
+    margin-bottom: 48px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 80px;
+}
+
+.cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 16px 32px;
+    background: linear-gradient(135deg, #d4af37 0%, #b8860b 100%);
+    color: #1a1a1a;
+    text-decoration: none;
+    font-size: 1.1em;
+    font-weight: 600;
+    border-radius: 50px;
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    font-family: 'Roboto', sans-serif;
+}
+
+.cta-button:hover {
+    background: linear-gradient(135deg, #b8860b 0%, #d4af37 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(212, 175, 55, 0.4);
+    color: #1a1a1a;
+}
+
+.arrow-icon {
+    width: 18px;
+    height: 18px;
+    transition: transform 0.3s ease;
+}
+
+.cta-button:hover .arrow-icon {
+    transform: translateX(4px);
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    animation: bounce 2s infinite;
+}
+
+.scroll-mouse {
+    width: 24px;
+    height: 36px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    padding-top: 6px;
+}
+
+.scroll-wheel {
+    width: 4px;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 2px;
+    animation: scroll 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateX(-50%) translateY(0);
+    }
+    40% {
+        transform: translateX(-50%) translateY(-8px);
+    }
+    60% {
+        transform: translateX(-50%) translateY(-4px);
+    }
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateY(0);
+        opacity: 0;
+    }
+    50% {
+        transform: translateY(8px);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(16px);
+        opacity: 0;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Section Styling */
+.section {
+    min-height: 100vh;
+    padding: 50px 20px;
+    background-size: cover;
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    scroll-margin-top: 100px; /* Offset for fixed header */
+}
+
+.section h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #ffe7c7;
+    text-shadow: 2px 2px 4px #000;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    justify-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.gallery img {
+    width: 100%;
+    max-width: 280px;
+    height: auto;
+    border: 3px solid rgba(211, 166, 89, 0.8);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(211, 166, 89, 0.2);
+    border-radius: 15px;
+    transition: all 0.4s ease;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+}
+
+.gallery img::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+}
+
+.gallery img:hover {
+    transform: scale(1.08) rotate(1deg);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8), 0 0 30px rgba(211, 166, 89, 0.4);
+    border-color: #d3a659;
+}
+
+.gallery img:hover::before {
+    left: 100%;
+}
+
+
+/* Modal styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    max-width: 80%; /* Limit the width of the image */
+    max-height: 80%; /* Limit the height of the image */
+}
+
+.modal-content:hover {
+    transform: scale(1.1); /* Slight zoom on hover */
+    cursor: zoom-out; /* Change cursor to indicate zoom-out */
+}
+
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    color: white;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#caption {
+    color: white;
+    text-align: center;
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+/* Footer */
+footer {
+    background-color: #333; /* Dark background for footer */
+    color: #fff; /* White text for visibility */
+    padding: 10px 0; /* Padding for spacing */
+    text-align: center; /* Centered text */
+    position: fixed; /* Fixed at the bottom */
+    left: 0;
+    bottom: 0;
+    width: 100%; /* Full width */
+    z-index: 10;
+}
+
+/* Change header background on scroll */
+header.scrolled {
+    background: transparent;
+    padding: 5px 20px; /* Reduced padding on scroll */
+}
+
+/* Media Queries for Responsive Design */
+
+/* For devices smaller than 768px (tablets and mobiles) */
+@media (max-width: 768px) {
+    body {
+        margin-top: 80px; /* Keep margin for fixed header */
+    }
+
+    header .gallery-title {
+        font-size: 2em; /* Smaller title font */
+    }
+
+    nav a {
+        font-size: 1em; /* Smaller nav font */
+    }
+
+    .section {
+        padding: 30px 10px; /* Reduce padding */
+    }
+
+    .section h2 {
+        font-size: 1.5em; /* Smaller section heading */
+    }
+
+    .gallery img {
+        width: 90%; /* Full width on mobile */
+        max-width: 250px; /* Limit max width */
+        margin-bottom: 10px; /* Space between images */
+    }
+
+    nav ul {
+        flex-direction: column; /* Stack navigation items */
+        gap: 10px; /* Space between items */
+    }
+}
+
+/* For larger screens */
+@media (min-width: 769px) {
+    .gallery {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Maintain grid layout */
+    }
+
+    .gallery img {
+        max-width: 280px; /* Maintain max width */
+    }
+}
